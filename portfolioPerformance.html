@@ -1,0 +1,53 @@
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+      var data = google.visualization.arrayToDataTable([
+
+['Name','3Y Perf','1Y Perf','3M Perf','EUR'],
+['Brent Oil',-48,-62,'lowest',959],
+['LBBW Div Euro',-38,-34,'lowest',4455],
+['FF Nordic',-31,-28,'lowest',28372],
+['Nordic Small Caps',25,3,'low',6751],
+['iShares Automation',23,-8,'low',3167],
+['SAP',17,-6,'mid',6458],
+['AIS MSCI SRI',10,0,'mid',5368],
+['MSCI MinVol',19,2,'high',4413],
+['Lyxor TecDAX',35,-1,'high',2988],
+['OekoVision',13,3,'highest',3791],
+['OEkwrld Klima',35,8,'highest',12308],
+['AIS NASDAQ',61,16,'highest',3668],
+['Portfolio 3M:-21.25%',-7,-14,'Portfolio','82698']
+
+      ]);
+
+      var options = {
+        title: 'Portfolio items by 3Y and 1Y  ' +
+               'Performance 05.05.2020',
+        hAxis: {title: '3Y Performance, Bubblesize =Value,\nColor=3M% with ]-27.7,-15.7,-12.2,-8.0[', ticks:[-50,-40,-30,-20,-10,0,10,20,30,40,50,60,70]},
+        vAxis: {title: '1Y Performance',
+          ticks: [-70,-60,-50,-40,-30,-20,-10,0,10,20]
+            },
+        colorAxis: {colors: ['blue', 'yellow']},
+        series: {'Portfolio': {color: '#E3F2FD'}, 'highest': {color: '#006600'}, 'high': {color: '#00CC00'}, 'mid':{color:'#FFFF33'}, 'low': {color: '#FFCC33'}, 'lowest': {color:'#FF0000'}},
+        bubble: {
+          textStyle: {
+            auraColor: 'none',
+          }
+        }
+      };
+
+      var chart = new google.visualization.BubbleChart(document.getElementById('portfolio'));
+
+      chart.draw(data, options);
+    }
+  </script>
+</head>
+<body>
+  <div id="portfolio" style="width: 900px; height: 500px;"></div>
+</body>
+</html>
